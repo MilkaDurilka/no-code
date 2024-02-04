@@ -25,6 +25,7 @@
     "@antv/x6-react-shape": "^2.2.3",
     "@dagrejs/dagre": "^1.0.4",
     "@ebay/nice-dag-react": "^1.0.31",
+    "@ebay/nice-dag-core": "^1.0.31",
     "@pixi/react": "^7.1.1",
     "@react-sigma/core": "^3.4.2",
     "antd": "^5.13.3",
