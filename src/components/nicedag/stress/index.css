@@ -1,0 +1,36 @@
+.my-first-dag {
+  height: 100vh;
+  width: 100%;
+}
+
+.my-first-dag-node {
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+}
+
+.my-first-dag-node > span {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.my-first-dag-connector {
+  width: 16px;
+  height: 16px;
+  border: 1px solid black;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: white;
+  cursor: pointer;
+  right: -8px;
+}
+
+.my-first-dag-edge {
+  text-align: center;
+  margin-top: -20px;
+}
+
+
