@@ -5,7 +5,6 @@ import {excuteAnimate, showNodeStatus, stopAnimate, zoomOptions} from "./hooks/u
 import './index.css'
 import {AnimatedBlock} from "../../animatedBlock";
 import {splitArrayIntoSubarrayOfEqualSize} from "../../../shared/lib/utils";
-import {Edge} from "@antv/x6";
 
 
 export const DagStress = () => {
@@ -25,6 +24,7 @@ export const DagStress = () => {
         setStatuses({nodeStatusList, edgeStatusList})
         graph.fromJSON({nodes, edges})
         graph.zoomToFit(zoomOptions)
+        // graph.zoomToRect(nodes[0])
 
     }, [graph]);
 
@@ -41,6 +41,8 @@ export const DagStress = () => {
     }, [graph, statuses])
 
     const updatePos = () => {
+        graph.clearCells()
+
         callbackIds.current.forEach(id => {
             cancelIdleCallback(id)
         })
@@ -50,7 +52,6 @@ export const DagStress = () => {
         // graph.fromJSON({nodes, edges})
         //optimisation
 
-        graph.clearCells()
 
         const nodesBatches = splitArrayIntoSubarrayOfEqualSize(nodes)
 
@@ -101,8 +102,8 @@ export const DagStress = () => {
             <button onClick={handleStop}>stop</button>
             <button onClick={updatePos}>change pos</button>
             <button onClick={handleAnimate}>animate</button>
-            <div className='container' style={{ height: '100vh' }}>
-                <div ref={refGraph} className='graph-container' style={{ height: '100vh' }} />
+            <div className='container'>
+                <div ref={refGraph} className='graph-container' />
             </div>
         </div>
     )

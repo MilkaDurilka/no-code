@@ -49,7 +49,6 @@ register({
     },
 })
 
-// 注册连线
 Graph.registerConnector(
     'curveConnector',
     (sourcePoint, targetPoint) => {
@@ -61,7 +60,7 @@ Graph.registerConnector(
         path.appendSegment(
             Path.createSegment('L', sourcePoint.x + 12, sourcePoint.y),
         )
-        // 水平三阶贝塞尔曲线
+
         path.appendSegment(
             Path.createSegment(
                 'C',

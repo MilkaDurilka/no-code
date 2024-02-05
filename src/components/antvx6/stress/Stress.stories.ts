@@ -2,7 +2,7 @@ import { Stress } from './Stress';
 
 // More on how to set up stories at: https://storybook.js.org/docs/react/writing-stories/introduction
 export default {
-  title: 'Antv/Stress',
+  title: 'AntvX6/Stress',
   component: Stress,
   tags: ['autodocs'],
 };

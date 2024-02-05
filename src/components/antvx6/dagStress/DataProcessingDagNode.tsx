@@ -1,34 +1,23 @@
 import {useState} from "react";
 import {
     CellStatus,
-    createEdge,
-    createNode,
-    getDownstreamNodePosition, NODE_TYPE_LOGO,
+    NODE_TYPE_LOGO,
     NodeType,
+    createDownstream,
     PROCESSING_TYPE_LIST
 } from "./hooks/useGraph/utils";
 import {Dropdown, Tooltip} from "antd";
 import classnames from "classnames";
-import {useInView} from "react-intersection-observer";
+// import {useInView} from "react-intersection-observer";
 
 export const DataProcessingDagNode = (props) => {
     const [plusActionSelected, setPlusActionSelected] = useState(false)
     // const { ref, inView, entry } = useInView({
     //     /* Optional options */
     //     threshold: 0,
+    //     triggerOnce: true
     // });
-    const createDownstream = (type: NodeType) => {
-        const { node } = props
-        const { graph } = node.model || {}
-        if (graph) {
-            const position = getDownstreamNodePosition(node, graph)
-            const newNode = createNode(type, graph, position)
-            const source = node.id
-            const target = newNode.id
 
-            createEdge(source, target, graph)
-        }
-    }
 
     const getPlusDagMenu = () => {
         return (
@@ -56,7 +45,7 @@ export const DataProcessingDagNode = (props) => {
     }
 
     const clickPlusDragMenu = (type: NodeType) => {
-        createDownstream(type)
+        createDownstream(props.node, type)
         setPlusActionSelected(false)
     }
 
@@ -90,10 +79,9 @@ export const DataProcessingDagNode = (props) => {
     const { name, type, status, statusMsg } = data
 
     return (
-        // <div ref={ref} className="data-processing-dag-node">
         <div className="data-processing-dag-node">
-            {/*{*/}
-            {/*    !inView ? null :*/}
+        {/*<div ref={ref} className="data-processing-dag-node">*/}
+        {/*    {!inView ? null :*/}
 
             <div
                 className="main-area"

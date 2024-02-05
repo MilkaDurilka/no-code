@@ -53,18 +53,19 @@ export const getStressData = (x, y, isRandom) => {
                 const edge =  {
                     "id": `edge-${i}-${j}`,
                     "source": {
-                        "cell": node.id,
-                        "port": node.ports[1]
-                    },
-                    "target": {
                         "cell": prevNode.id,
                         "port": prevNode.ports[0]
                     },
-                    "shape": "data-processing-curve",
+                    "target": {
+                        "cell": node.id,
+                        "port": node.ports[1]
+                    },
+                    // "shape": "data-processing-curve",
+                    "shape": "edge",
                     "zIndex": -1,
                     "data": {
-                        "source": node.id,
-                        "target": prevNode.id
+                        "source": prevNode.id,
+                        "target": node.id
                     }
                 }
                 edges.push(edge)

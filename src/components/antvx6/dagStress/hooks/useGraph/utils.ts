@@ -63,7 +63,8 @@ export const graphOptions = {
         createEdge() {
             // return graph.createEdge({
             return new Shape.Edge({
-                shape: 'data-processing-curve',
+                // shape: 'data-processing-curve',
+                shape: 'edge',
                 attrs: {
                     line: {
                         strokeDasharray: '5 5',
@@ -304,4 +305,17 @@ export const stopAnimate = (graph, edgeStatusList) => {
     })
 
     // graph.select('node-2')
+}
+
+export const createDownstream = (node, type: NodeType) => {
+    // const { node } = props
+    const { graph } = node.model || {}
+    if (graph) {
+        const position = getDownstreamNodePosition(node, graph)
+        const newNode = createNode(type, graph, position)
+        const source = node.id
+        const target = newNode.id
+
+        createEdge(source, target, graph)
+    }
 }
