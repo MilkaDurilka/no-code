@@ -2,10 +2,16 @@
     box-sizing: border-box;
 }
 
+.graph-container {
+    content-visibility: auto;
+    contain-intrinsic-size: 500px;
+}
+
 .data-processing-dag-node {
     display: flex;
     flex-direction: row;
     align-items: center;
+    content-visibility: auto;
 }
 
 .main-area {

@@ -13,10 +13,10 @@ import {useInView} from "react-intersection-observer";
 
 export const DataProcessingDagNode = (props) => {
     const [plusActionSelected, setPlusActionSelected] = useState(false)
-    const { ref, inView, entry } = useInView({
-        /* Optional options */
-        threshold: 0,
-    });
+    // const { ref, inView, entry } = useInView({
+    //     /* Optional options */
+    //     threshold: 0,
+    // });
     const createDownstream = (type: NodeType) => {
         const { node } = props
         const { graph } = node.model || {}
@@ -90,9 +90,10 @@ export const DataProcessingDagNode = (props) => {
     const { name, type, status, statusMsg } = data
 
     return (
-        <div ref={ref} className="data-processing-dag-node">
-            {
-                !inView ? null :
+        // <div ref={ref} className="data-processing-dag-node">
+        <div className="data-processing-dag-node">
+            {/*{*/}
+            {/*    !inView ? null :*/}
 
             <div
                 className="main-area"
@@ -124,9 +125,10 @@ export const DataProcessingDagNode = (props) => {
                     </div>
                 </div>
             </div>
-            }
+            {/*}*/}
 
-            {type !== NodeType.OUTPUT && inView && (
+            {/*{type !== NodeType.OUTPUT && inView && (*/}
+            {type !== NodeType.OUTPUT && (
                 <div className="plus-dag">
                     <Dropdown
                         dropdownRender={getPlusDagMenu}
