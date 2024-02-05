@@ -24,8 +24,8 @@
     "@antv/x6-plugin-transform": "^2.1.8",
     "@antv/x6-react-shape": "^2.2.3",
     "@dagrejs/dagre": "^1.0.4",
-    "@ebay/nice-dag-react": "^1.0.31",
     "@ebay/nice-dag-core": "^1.0.31",
+    "@ebay/nice-dag-react": "^1.0.31",
     "@pixi/react": "^7.1.1",
     "@react-sigma/core": "^3.4.2",
     "antd": "^5.13.3",
@@ -40,6 +40,7 @@
     "pixi.js": "^7.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-intersection-observer": "^9.6.0",
     "reactflow": "^11.10.3",
     "sigma": "^3.0.0-beta.4"
   },

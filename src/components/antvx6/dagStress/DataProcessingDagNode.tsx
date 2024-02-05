@@ -9,9 +9,14 @@ import {
 } from "./hooks/useGraph/utils";
 import {Dropdown, Tooltip} from "antd";
 import classnames from "classnames";
+import {useInView} from "react-intersection-observer";
 
 export const DataProcessingDagNode = (props) => {
     const [plusActionSelected, setPlusActionSelected] = useState(false)
+    const { ref, inView, entry } = useInView({
+        /* Optional options */
+        threshold: 0,
+    });
     const createDownstream = (type: NodeType) => {
         const { node } = props
         const { graph } = node.model || {}
@@ -85,7 +90,10 @@ export const DataProcessingDagNode = (props) => {
     const { name, type, status, statusMsg } = data
 
     return (
-        <div className="data-processing-dag-node">
+        <div ref={ref} className="data-processing-dag-node">
+            {
+                !inView ? null :
+
             <div
                 className="main-area"
                 onMouseEnter={onMainMouseEnter}
@@ -116,8 +124,9 @@ export const DataProcessingDagNode = (props) => {
                     </div>
                 </div>
             </div>
+            }
 
-            {type !== NodeType.OUTPUT && (
+            {type !== NodeType.OUTPUT && inView && (
                 <div className="plus-dag">
                     <Dropdown
                         dropdownRender={getPlusDagMenu}
@@ -135,6 +144,7 @@ export const DataProcessingDagNode = (props) => {
                     </Dropdown>
                 </div>
             )}
+
         </div>
     )
 
