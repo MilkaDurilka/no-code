@@ -11,7 +11,7 @@ export const Antv = ({isCustom}) => {
     const ref = useRef(null)
     const refIntervalId  = useRef(null)
     const [isWorking, setWorking] = useState(false)
-    const {graph} = useGraph(ref, isCustom)
+    const {graph} = useGraph(ref)
 
     useEffect(() => {
         if (!graph) return
@@ -26,7 +26,7 @@ export const Antv = ({isCustom}) => {
         if (!graph) return
         const data = getStressData(33, 30, true, isCustom)
         graph.changeData(data)
-    }, [graph])
+    }, [graph, isCustom])
 
     useEffect(() => {
         if (isWorking && !refIntervalId.current) {
