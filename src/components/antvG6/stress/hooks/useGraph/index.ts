@@ -13,7 +13,7 @@ export const useGraph = (refGraph) => {
             modes: {
                 default: ['drag-node', 'drag-canvas', 'zoom-canvas'],
             },
-            plugins: [contextMenu, minimap],
+            plugins: [],
             defaultNode: {
                 size: [80, 40],
                 type: 'rect',
@@ -26,7 +26,6 @@ export const useGraph = (refGraph) => {
 
         setGraph(graph)
 
-        return () => graph.destroy()
     }, []);
 
     return {

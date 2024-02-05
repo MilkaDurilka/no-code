@@ -7,38 +7,39 @@ import {useGraph} from "./hooks/useGraph";
 /**
  * Antv G6 UI component for user interaction
  */
-export const Antv = () => {
+export const Antv = ({isCustom}) => {
     const ref = useRef(null)
     const refIntervalId  = useRef(null)
     const [isWorking, setWorking] = useState(false)
-    const {graph} = useGraph(ref)
+    const {graph} = useGraph(ref, isCustom)
 
     useEffect(() => {
+        console.log('mounted graph', graph)
         if (!graph) return
 
-        const data = getStressData(33, 30)
+        const data = getStressData(33, 30, false, isCustom)
         graph.data(data)
         graph.render()
 
-    }, [graph]);
+    }, [graph, isCustom]);
 
-    const updatePos = useCallback(() => {
-        if (!graph) return
-        const data = getStressData(33, 30, true)
-        graph.changeData(data)
-    }, [graph])
-
-    useEffect(() => {
-        if (isWorking && !refIntervalId.current) {
-            refIntervalId.current = setInterval(() => {
-                updatePos()
-            }, 1000)
-        }
-        if (!isWorking && refIntervalId.current) {
-            clearInterval(refIntervalId.current)
-            refIntervalId.current = null
-        }
-    }, [isWorking]);
+    // const updatePos = useCallback(() => {
+    //     if (!graph) return
+    //     const data = getStressData(33, 30, true, isCustom)
+    //     graph.changeData(data)
+    // }, [graph])
+    //
+    // useEffect(() => {
+    //     if (isWorking && !refIntervalId.current) {
+    //         refIntervalId.current = setInterval(() => {
+    //             updatePos()
+    //         }, 1000)
+    //     }
+    //     if (!isWorking && refIntervalId.current) {
+    //         clearInterval(refIntervalId.current)
+    //         refIntervalId.current = null
+    //     }
+    // }, [isWorking]);
 
     const handleStart = useCallback(() => {
         setWorking(true)
@@ -53,7 +54,7 @@ export const Antv = () => {
           { isWorking && <AnimatedBlock /> }
           <button onClick={handleStart}>start</button>
           <button onClick={handleStop}>stop</button>
-          <button onClick={updatePos}>change pos</button>
+          {/*<button onClick={updatePos}>change pos</button>*/}
         <div ref={ref} />
       </div>
   );

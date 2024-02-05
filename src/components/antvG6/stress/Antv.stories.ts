@@ -8,5 +8,7 @@ export default {
 };
 
 export const Primary = {
-  args: {},
+  args: {
+    isCustom: false
+  },
 };

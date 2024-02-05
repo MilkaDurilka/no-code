@@ -1,4 +1,4 @@
-export const getStressData = (x, y, isRandom) => {
+export const getStressData = (x, y, isRandom, isCustom) => {
     const nodes = [];
     const edges = [];
     for(let j = 0; j < x; j++) {
@@ -8,7 +8,7 @@ export const getStressData = (x, y, isRandom) => {
                 id: `node-${i}-${j}`,
                 x: isRandom ? Math.random() * 5000: 250 * i,
                 y: isRandom ? Math.random() * 5000:  100 * j,
-                type: 'modelRect',
+                type: isCustom ? 'modelRect' : 'rect',
                 label: 'Step 1',
                 size: [150, 50],
 
