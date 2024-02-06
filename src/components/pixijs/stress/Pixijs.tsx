@@ -1,10 +1,11 @@
 import * as Dagre from '@dagrejs/dagre';
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 
 import {PixiGraph} from "./PixiGraph";
 import './index.css'
 import {createNodesAndEdges} from "../../../shared/lib/utils.js";
 import {AnimatedBlock} from "../../animatedBlock";
+import {FpsView} from "react-fps";
 
 const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
 
@@ -104,6 +105,7 @@ export const Pixijs = ({xNodes, yNodes}) => {
 
     return (
         <div>
+            <FpsView top={'80%'} />
             { isWorking && <AnimatedBlock /> }
             <button onClick={handleStart}>start</button>
             <button onClick={handleStop}>stop</button>

@@ -1,10 +1,11 @@
-import {useCallback, useEffect, useRef, useState} from 'react'
+import React, {useCallback, useEffect, useRef, useState} from 'react'
 import { getStressData } from './data'
 import {useGraph} from "./hooks/useGraph";
 import {excuteAnimate, showNodeStatus, stopAnimate, zoomOptions} from "./hooks/useGraph/utils";
 import './index.css'
 import {AnimatedBlock} from "../../animatedBlock";
 import {splitArrayIntoSubarrayOfEqualSize} from "../../../shared/lib/utils";
+import {FpsView} from "react-fps";
 
 
 export const DagStress = () => {
@@ -96,6 +97,7 @@ export const DagStress = () => {
 
     return (
         <div>
+            <FpsView top={'80%'} />
             <AnimatedBlock />
             { isWorking && <AnimatedBlock /> }
             <button onClick={handleStart}>start</button>

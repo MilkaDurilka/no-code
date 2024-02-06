@@ -1,10 +1,11 @@
 import {Edge} from '@antv/x6'
-import {useCallback, useEffect, useRef, useState} from "react";
+import React, {useCallback, useEffect, useRef, useState} from "react";
 import {createNodesAndEdges} from "./data";
 import {useGraph} from "./hooks/useGraph";
 import './index.css'
 import {AnimatedBlock} from "../../animatedBlock";
 import {splitArrayIntoSubarrayOfEqualSize} from "../../../shared/lib/utils";
+import {FpsView} from "react-fps";
 
 export const Stress = ({xNodes, yNodes, isCustom}) => {
     const refGraph  = useRef(null)
@@ -94,6 +95,7 @@ export const Stress = ({xNodes, yNodes, isCustom}) => {
 
     return (
         <div>
+            <FpsView top={'80%'} />
             <AnimatedBlock />
             { isWorking && <AnimatedBlock /> }
             <button onClick={handleStart}>start</button>

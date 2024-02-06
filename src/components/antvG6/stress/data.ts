@@ -18,7 +18,7 @@ export const getStressData = (x, y, isRandom, isCustom) => {
             if (prevNode) {
                 const edge =  {
                     id: `edge-${i}-${j}`,
-                    label:  `Status-${i}-${j}`,
+                    // label:  `Status-${i}-${j}`,
                     source: prevNode.id,
                     target: node.id
                 }

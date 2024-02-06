@@ -5,6 +5,7 @@ import { createNodesAndEdgesLitegraph } from '../../../shared/lib/utils.js';
 import 'litegraph.js/css/litegraph.css';
 import './index.css'
 import {AnimatedBlock} from "../../animatedBlock";
+import {FpsView} from "react-fps";
 
 
 const graph = new LG.LGraph();
@@ -73,6 +74,7 @@ export const Litegraph = ({countNodesX, countNodesY}) => {
 
     return (
         <div style={{height: '100vh', width: '100%'}}>
+            <FpsView top={'80%'} />
             { isWorking && <AnimatedBlock /> }
             <button onClick={handleStart}>start</button>
             <button onClick={handleStop}>stop</button>

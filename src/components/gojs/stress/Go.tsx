@@ -4,6 +4,7 @@ import { ReactDiagram } from 'gojs-react';
 import { createNodesAndEdges } from '../../../shared/lib/utils.js';
 import './index.css'
 import {AnimatedBlock} from "../../animatedBlock";
+import {FpsView} from "react-fps";
 
 function initDiagram() {
     const $ = go.GraphObject.make;
@@ -96,6 +97,7 @@ export const Go = ({countNodesX, countNodesY, isCustom}) => {
 
     return (
         <div style={{ height: '100vh' }}>
+            <FpsView top={'80%'} />
             { isWorking && <AnimatedBlock /> }
             <button onClick={handleStart}>start</button>
             <button onClick={handleStop}>stop</button>

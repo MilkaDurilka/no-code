@@ -9,6 +9,8 @@ export default {
 
 export const Primary = {
   args: {
+    xCount: 33,
+    yCount: 30,
     isCustom: false
   },
 };

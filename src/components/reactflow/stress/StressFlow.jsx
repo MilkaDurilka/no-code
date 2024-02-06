@@ -13,6 +13,7 @@ import PropTypes from "prop-types";
 import { createNodesAndEdges } from '../../../shared/lib/utils.ts';
 import { CustomNode } from './ui/CustomNode.jsx'
 import {AnimatedBlock} from "../../animatedBlock";
+import {FpsView} from "react-fps";
 
 
 export const StressFlow = ({countNodesX, countNodesY, isCustom}) => {
@@ -80,6 +81,7 @@ export const StressFlow = ({countNodesX, countNodesY, isCustom}) => {
 
     return (
         <div style={{ height: '100vh' }}>
+            <FpsView top={'80%'} />
             { isWorking && <AnimatedBlock /> }
             <button onClick={handleStart}>start</button>
             <button onClick={handleStop}>stop</button>

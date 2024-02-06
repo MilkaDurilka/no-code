@@ -3,6 +3,7 @@ import Graph from "graphology";
 import { SigmaContainer, useLoadGraph, useSigma } from "@react-sigma/core";
 import { createNodesAndEdges } from '../../../shared/lib/utils.js';
 import "@react-sigma/core/lib/react-sigma.min.css";
+import {FpsView} from "react-fps";
 import './index.css';
 import {AnimatedBlock} from "../../animatedBlock";
 
@@ -80,6 +81,7 @@ export const LoadGraph: FC<SigmaProps> = ({ countNodesX, countNodesY, isCustom =
 
 
     return  (<>
+        <FpsView />
         { isWorking && <AnimatedBlock /> }
         <button onClick={handleStart}>start</button>
         <button onClick={handleStop}>stop</button>
